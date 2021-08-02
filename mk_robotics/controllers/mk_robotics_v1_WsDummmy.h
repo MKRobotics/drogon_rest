@@ -3,6 +3,8 @@
 using namespace drogon;
 namespace mk_robotics
 {
+  namespace api{
+  
   namespace v1
   {
     class WsDummmy : public drogon::WebSocketController<WsDummmy>
@@ -18,5 +20,6 @@ namespace mk_robotics
       WS_PATH_ADD("/data");
       WS_PATH_LIST_END
     };
+  }
   }
 }
