@@ -16,9 +16,7 @@ int main()
     scheduler.addTask(
         "NotifyClients", [&wsManager, &dummyStatusProvider]
 
-        {
-                             wsManager.notifyAll(dummyStatusProvider.getStatus());
-        },
+        { wsManager.notifyAll(dummyStatusProvider.getStatus()); },
         boost::posix_time::seconds(1));
 
     std::thread web_service([&wsHandler]
