@@ -46,6 +46,10 @@ aux_source_directory(controllers CTL_SRC)
 aux_source_directory(filters FILTER_SRC)
 aux_source_directory(plugins PLUGIN_SRC)
 aux_source_directory(models MODEL_SRC)
+aux_source_directory(utils UTILS_SRC)
+aux_source_directory(ws_manager WS_MANAGER_SRC)
+aux_source_directory(status_provider STATUS_PROVIDER_SRC)
+aux_source_directory(scheduler SCHEDULER_SRC)
 
 drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/views
                     ${CMAKE_CURRENT_BINARY_DIR})
@@ -62,6 +66,10 @@ target_sources(${PROJECT_NAME}
                ${CTL_SRC}
                ${FILTER_SRC}
                ${PLUGIN_SRC}
+               ${UTILS_SRC}
+               ${WS_MANAGER_SRC}
+               ${SCHEDULER_SRC}
+               ${STATUS_PROVIDER_SRC}
                ${MODEL_SRC})
 # ##############################################################################
 # uncomment the following line for dynamically loading views 
