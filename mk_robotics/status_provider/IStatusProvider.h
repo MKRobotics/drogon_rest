@@ -7,7 +7,7 @@ namespace mk_robotics
     class IStatusProvider
     {
     public:
-        virtual std::string getStatus() = 0;
+        virtual std::string GetStatus() = 0;
         virtual ~IStatusProvider() = default;
     };
 }

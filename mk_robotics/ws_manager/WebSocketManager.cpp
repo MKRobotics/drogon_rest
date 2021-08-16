@@ -1,17 +1,22 @@
 #include "WebSocketManager.h"
-
 namespace mk_robotics
 {
     namespace ws_manager
     {
-        void WebSocketManager::notifyAll(const std::string &msg)
+        void WebSocketManager::NotifyAll(const std::string &msg)
         {
-            forEach([&msg](const auto &connection)
+            ForEach([&msg](const auto &connection)
                     { connection->send(msg); });
         }
-        void WebSocketManager::add(const drogon::WebSocketConnectionPtr &client)
+        void WebSocketManager::Add(const drogon::WebSocketConnectionPtr &client)
         {
-            _clients.push_back(client);
+            clients_.push_back(client);
         }
+        void WebSocketManager::Remove(const drogon::WebSocketConnectionPtr &client)
+        {
+            clients_.erase(std::remove_if(clients_.begin(), clients_.end(), [&client](const auto &connection)
+                           { return connection == client;}), clients_.end());
+        }
+
     }
 }

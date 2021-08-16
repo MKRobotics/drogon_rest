@@ -3,13 +3,13 @@
 namespace mk_robotics
 {
 
-    void PeriodicScheduler::run()
+    void PeriodicScheduler::Run()
     {
-        io_service.run();
+        io_service_.run();
     }
 
-    void PeriodicScheduler::addTask(std::string const &name, PeriodicTask::handler_fn const &task, boost::posix_time::time_duration interval)
+    void PeriodicScheduler::AddTask(std::string const &name, PeriodicTask::handler_fn const &task, boost::posix_time::time_duration interval)
     {
-        tasks.push_back(std::make_unique<PeriodicTask>(std::ref(io_service), name, interval, task));
+        tasks_.push_back(std::make_unique<PeriodicTask>(std::ref(io_service_), name, interval, task));
     }
 }

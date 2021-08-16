@@ -50,6 +50,8 @@ aux_source_directory(utils UTILS_SRC)
 aux_source_directory(ws_manager WS_MANAGER_SRC)
 aux_source_directory(status_provider STATUS_PROVIDER_SRC)
 aux_source_directory(scheduler SCHEDULER_SRC)
+aux_source_directory(data_mappings DM_SRC)
+
 
 drogon_create_views(${PROJECT_NAME} ${CMAKE_CURRENT_SOURCE_DIR}/views
                     ${CMAKE_CURRENT_BINARY_DIR})
@@ -70,7 +72,8 @@ target_sources(${PROJECT_NAME}
                ${WS_MANAGER_SRC}
                ${SCHEDULER_SRC}
                ${STATUS_PROVIDER_SRC}
-               ${MODEL_SRC})
+               ${MODEL_SRC}
+               ${DM_SRC})
 # ##############################################################################
 # uncomment the following line for dynamically loading views 
 # set_property(TARGET ${PROJECT_NAME} PROPERTY ENABLE_EXPORTS ON)

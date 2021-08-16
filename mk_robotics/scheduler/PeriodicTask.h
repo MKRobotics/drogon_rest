@@ -11,15 +11,15 @@ namespace mk_robotics
         using handler_fn = std::function<void()>;
 
         PeriodicTask(boost::asio::io_service &io_service, std::string const &name, boost::posix_time::time_duration interval, handler_fn task);
-        void execute(boost::system::error_code const &e);
-        void start();
+        void Execute(boost::system::error_code const &e);
+        void Start();
 
     private:
-        void start_wait();
-        boost::asio::io_service &ioService;
-        boost::asio::deadline_timer timer;
-        handler_fn task;
-        std::string name;
-        boost::posix_time::time_duration interval;
+        void StartWait();
+        boost::asio::io_service &io_service_;
+        boost::asio::deadline_timer timer_;
+        handler_fn task_;
+        std::string name_;
+        boost::posix_time::time_duration interval_;
     };
 }

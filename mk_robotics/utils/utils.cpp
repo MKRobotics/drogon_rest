@@ -1,11 +1,11 @@
-#include "Util.h"
+#include "utils.h"
 #include "random"
 
 namespace mk_robotics
 {
-    namespace util
+    namespace utils
     {
-        int randomIntFromRange(int min, int max)
+        int RandomIntFromRange(int min, int max)
         {
             std::random_device rdev;
             std::mt19937 rgen(rdev());

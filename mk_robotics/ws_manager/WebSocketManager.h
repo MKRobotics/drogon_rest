@@ -14,17 +14,17 @@ namespace mk_robotics
         {
         public:
             template <typename F>
-            void forEach(F &&f)
+            void ForEach(F &&f)
             {
-                std::for_each(_clients.begin(), _clients.end(), f);
+                std::for_each(clients_.begin(), clients_.end(), f);
             }
-            
-            void notifyAll(const std::string &msg);
-            void add(const drogon::WebSocketConnectionPtr &);
-            
+
+            void NotifyAll(const std::string &msg);
+            void Add(const drogon::WebSocketConnectionPtr &);
+            void Remove(const drogon::WebSocketConnectionPtr &);
 
         private:
-            std::vector<drogon::WebSocketConnectionPtr> _clients;
+            std::vector<drogon::WebSocketConnectionPtr> clients_;
         };
     }
 }

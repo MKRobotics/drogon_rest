@@ -1,11 +1,11 @@
 #include "DummyStatusProvider.h"
 #include <boost/property_tree/ptree.hpp>
 #include <boost/property_tree/json_parser.hpp>
-#include "utils/Util.h"
+#include "utils/utils.h"
 
 namespace mk_robotics
 {
-    std::string DummyStatusProvider::getStatus()
+    std::string DummyStatusProvider::GetStatus()
     {
         static std::array<std::string, 12> hg{"Wilk na mikrofonie w głowie się nie miesci",
                                               "Jebac leszczy z lamusami się nie piescic",
@@ -21,11 +21,11 @@ namespace mk_robotics
                                               "Uwalniam instynkt gdy atmosfera się zagesci"};
 
         boost::property_tree::ptree pt;
-        pt.put("id", util::randomIntFromRange(0, 100));
-        pt.put("content", hg[util::randomIntFromRange(0, hg.size() - 1)]);
+        pt.put("id", utils::RandomIntFromRange(0, 100));
+        pt.put("content", hg[utils::RandomIntFromRange(0, hg.size() - 1)]);
         pt.put("type", "[Log] Add Log");
         pt.put("timestamp", std::time(0));
-        pt.put("priority", util::randomIntFromRange(0, 3));
+        pt.put("priority", utils::RandomIntFromRange(0, 3));
         std::stringstream ss;
         boost::property_tree::json_parser::write_json(ss, pt);
         return ss.str();

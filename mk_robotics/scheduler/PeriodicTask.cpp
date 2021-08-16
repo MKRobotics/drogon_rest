@@ -3,29 +3,29 @@
 namespace mk_robotics
 {
     PeriodicTask::PeriodicTask(boost::asio::io_service &io_service, std::string const &name, boost::posix_time::time_duration interval, handler_fn task)
-        : ioService(io_service), interval(interval), task(task), name(name), timer(io_service)
+        : io_service_(io_service), interval_(interval), task_(task), name_(name), timer_(io_service)
     {
-        ioService.post(boost::bind(&PeriodicTask::start, this));
+        io_service.post(boost::bind(&PeriodicTask::Start, this));
     }
 
-    void PeriodicTask::execute(boost::system::error_code const &e)
+    void PeriodicTask::Execute(boost::system::error_code const &e)
     {
         if (e != boost::asio::error::operation_aborted)
         {
-            task();
-            timer.expires_at(timer.expires_at() + interval);
-            start_wait();
+            task_();
+            timer_.expires_at(timer_.expires_at() + interval_);
+            StartWait();
         }
     }
 
-    void PeriodicTask::start()
+    void PeriodicTask::Start()
     {
-        timer.expires_from_now(interval);
-        start_wait();
+        timer_.expires_from_now(interval_);
+        StartWait();
     }
 
-    void PeriodicTask::start_wait()
+    void PeriodicTask::StartWait()
     {
-        timer.async_wait(boost::bind(&PeriodicTask::execute, this, boost::asio::placeholders::error));
+        timer_.async_wait(boost::bind(&PeriodicTask::Execute, this, boost::asio::placeholders::error));
     }
 }

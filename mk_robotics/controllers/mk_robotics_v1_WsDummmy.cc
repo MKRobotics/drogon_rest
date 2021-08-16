@@ -3,7 +3,7 @@ using namespace mk_robotics::api::v1;
 
 WsDummmy::WsDummmy(ws_manager::WebSocketManager *manager, IStatusProvider *statusProvider)
     : manager_(manager),
-      statusProvider_(statusProvider)
+      status_provider_(statusProvider)
 {
 }
 
@@ -13,9 +13,9 @@ void WsDummmy::handleNewMessage(const WebSocketConnectionPtr &wsConnPtr, std::st
 }
 void WsDummmy::handleNewConnection(const HttpRequestPtr &req, const WebSocketConnectionPtr &wsConnPtr)
 {
-    manager_->add(wsConnPtr);
+    manager_->Add(wsConnPtr);
 }
 void WsDummmy::handleConnectionClosed(const WebSocketConnectionPtr &wsConnPtr)
 {
-    LOG_DEBUG << "Disconnected ";
+    manager_->Remove(wsConnPtr);
 }

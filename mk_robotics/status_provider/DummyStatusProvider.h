@@ -9,6 +9,6 @@ namespace mk_robotics
     class DummyStatusProvider : public IStatusProvider
     {
     public:
-        std::string getStatus() override;
+        std::string GetStatus() override;
     };
 }

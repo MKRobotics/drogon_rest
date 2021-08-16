@@ -27,7 +27,7 @@ namespace mk_robotics
         WS_PATH_LIST_END
       private:
         ws_manager::WebSocketManager *manager_;
-        IStatusProvider *statusProvider_;
+        IStatusProvider *status_provider_;
       };
     }
   }
