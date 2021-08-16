@@ -23,7 +23,7 @@ namespace mk_robotics
         boost::property_tree::ptree pt;
         pt.put("id", util::randomIntFromRange(0, 100));
         pt.put("content", hg[util::randomIntFromRange(0, hg.size() - 1)]);
-        pt.put("type", "log");
+        pt.put("type", "[Log] Add Log");
         pt.put("timestamp", std::time(0));
         pt.put("priority", util::randomIntFromRange(0, 3));
         std::stringstream ss;
