@@ -4,7 +4,7 @@
 #### Build
 
 - docker build -t <name_of_image> . 
-- docker run -it --network host mk_rest <name_of_image> 
+- docker run -it --network host <name_of_image>
 
 #### API
 ##### WebSocket
