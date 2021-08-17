@@ -1,17 +1,21 @@
 #include "mk_robotics_v1_WsDummmy.h"
 using namespace mk_robotics::api::v1;
 
-void WsDummmy:: handleNewMessage(const WebSocketConnectionPtr &wsConnPtr, std::string &&message, const WebSocketMessageType &type)
+WsDummmy::WsDummmy(ws_manager::WebSocketManager *manager, IStatusProvider *statusProvider)
+    : manager_(manager),
+      status_provider_(statusProvider)
 {
-    std::ostringstream oss;
-    oss << "MSG: " << message;
-    wsConnPtr->send(oss.str());
+}
+
+void WsDummmy::handleNewMessage(const WebSocketConnectionPtr &wsConnPtr, std::string &&message, const WebSocketMessageType &type)
+{
+    LOG_DEBUG << "Message " << message;
 }
 void WsDummmy::handleNewConnection(const HttpRequestPtr &req, const WebSocketConnectionPtr &wsConnPtr)
 {
-    wsConnPtr->send("OK XD");
+    manager_->Add(wsConnPtr);
 }
 void WsDummmy::handleConnectionClosed(const WebSocketConnectionPtr &wsConnPtr)
 {
-    LOG_DEBUG << "Disconnected ";
+    manager_->Remove(wsConnPtr);
 }
